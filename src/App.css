@@ -1,37 +1,366 @@
-.App {
+body {
+  background-color: rgb(113, 16, 16);
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  margin-left: 200px; 
+  width: calc(100% - 200px);
+  height: 85vh;
+  background-color: rgb(113, 16, 16);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 2rem;
+  background-color: rgba(143, 22, 22, 0.502);
+}
+
+.temp {
+  font-size: 4.5rem;
+}
+
+.temploc {
+  font-size: 2rem;
+}
+
+.condition {
+  font-size: 1.3rem;
+  margin-block-start: 0.5rem;
+  margin-left: 0.2rem;
+}
+
+.extras p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 8vh;
+}
+
+.searcharea {
+  padding: 0.5rem 0;
+  outline: none;
+  color: white;
+  border: none;
+  background-color: rgb(91, 12, 12);
+  font-size: 1.1rem;
+  border-bottom: 2px solid rgb(156, 105, 105);
+  width: 80%;
+}
+
+button {
+  background-color: rgb(188, 101, 101);
+  margin-top: 1rem;
+  margin-left: 0.4rem;
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6%;
+  box-shadow: 1px 1px 1px 4px rgb(69, 2, 1);
+}
+
+.loading,
+.error,
+.info {
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.history {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 1rem;
+  padding: 1rem;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  width: 180px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.history h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.history ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 0.5rem;
+}
+
+.history li {
+  cursor: pointer;
+  padding: 0.4rem;
+  background-color: rgb(120, 29, 29);
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.history li:hover {
+  background-color: rgb(156, 105, 105);
+}
+
+@media (max-width: 768px) {
+  .temp {
+    font-size: 3rem;
+  }
+
+  .temploc {
+    font-size: 1.5rem;
+  }
+
+  .condition {
+    font-size: 1rem;
+    margin-left: 0;
+  }
+
+  .box {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .searcharea {
+    font-size: 1rem;
+    width: 50%;
+  }
+
+  button {
+    font-size: 1rem;
+    width: auto;
+    margin: 1rem auto;
+  }
+
+  nav {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
+  .info {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 1.5s ease;
+    color: var(--text-color, #fff); 
+  }
+  
+  .info h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #ffcc00;
+  }
+  
+  .info p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }.info {
+    text-align: center;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .info h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  
+  .info p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-top: 0;
+  }
+  
+  .intro-image {
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .history {
+    position: static;
+    width: 100%;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .container {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+.forecast-box {
+  margin-top: 2rem;
+  text-align: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.forecast-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.forecast-item {
+  background-color: rgba(143, 22, 22, 0.502);
+  padding: 1rem;
+  min-width: 100px;
+}
+
+.app.light {
+  color: #111;
+}
+
+.app.light .container {
+  background-color: #ffe6e6;
+  color: #111;
+}
+
+.app.light .box,
+.app.light .forecast-item,
+.app.light .history {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #111;
+}
+
+.app.light .searcharea {
+  background-color: #fff0f0;
+  color: #111;
+  border-bottom: 2px solid #e88a8a;
+}
+
+.app.light button {
+  background-color: #e88a8a;
+  color: white;
+  box-shadow: 1px 1px 2px 3px rgba(150, 0, 0, 0.2);
+}
+
+.app.light .history li {
+  background-color: #e88a8a;
+  color: white;
+}
+
+.app.light .history li:hover {
+  background-color: #ffaaaa;
+}
+.app.light .forecast-item {
+  color: #111; 
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.theme-toggle button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.app.light .theme-toggle button {
+  background-color: #e88a8a;
+  color: #fff;
+}
+.top-right-controls {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.top-right-controls button {
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: rgb(156, 105, 105);
+  color: white;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.app.light .top-right-controls button {
+  background-color: #e88a8a;
+  color: #fff;
+}
+
+/* Optional: disable state */
+.top-right-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.loading::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  border: 3px solid white;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+body.light-mode {
+  background-color: #ffe6e6;
+  color: #111;
+}
+
+@keyframes spin {
   to {
     transform: rotate(360deg);
   }
